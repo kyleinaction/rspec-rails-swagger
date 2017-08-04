@@ -239,6 +239,16 @@ RSpec.describe RSpec::Rails::Swagger::Helpers::Operation do
     end
   end
 
+  describe '#security' do
+    before { subject.metadata = {swagger_operation: {}} }
+
+    it 'accepts an array' do
+      subject.security('Bearer', [])
+
+      expect(subject.metadata[:swagger_operation][:security]).to eq ['Bearer', []]
+    end
+  end
+
   describe '#response' do
     before { subject.metadata = {swagger_object: :operation} }
 

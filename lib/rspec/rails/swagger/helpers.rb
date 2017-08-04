@@ -188,6 +188,11 @@ module RSpec
             metadata[:swagger_operation][:tags] += tags
           end
 
+          def security *security
+            metadata[:swagger_operation][:security] ||= []
+            metadata[:swagger_operation][:security] += security
+          end
+
           def response status_code, attributes = {}, &block
             attributes.symbolize_keys!
 
